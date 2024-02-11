@@ -1,0 +1,20 @@
+HELP.md
+
+
+### venv ###
+venv/
+.venv/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+
+### VS Code ###
+.vscode/
+
+*/sqlite3.exe
+kaggle_set/
+.ipynb_checkpoints
