@@ -4,7 +4,7 @@
 - for object detection py-torches Faster R-CNN with MobileNetV3-Large backbone was used
 - this is for VRAM economy
 - no additional augmentation of images was done
-- to replecate the results of training putting dataset in kaggle_set and creating and running the notebook CNN.ipynb should be enough
+- to replecate the results of training putting dataset in kaggle_set  and creating png/stage_2_train_images_jpg_224 folder and running the notebook CNN.ipynb should be enough. Might have to uncomment convert_dcm_to_jpg function as well.
 - to replicate the results of testing starting 'inference.py' with path to testing dataset folder should be enough
 - python 3.10 was used
 ### Running inference.py
