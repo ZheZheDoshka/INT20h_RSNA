@@ -4,7 +4,8 @@ import torch
 
 def train_cl(cl, train_dataloader, e, optimizer, loss_function):
     all_loss = []
-    optimizer = optimizer
+    loss_function = torch.nn.BCELoss()
+    optimizer = torch.optim.Adam(cl.parameters(), lr=0.0002)
     for epoch in range(1, e + 1):
         running_loss = 0
         with tqdm(train_dataloader, unit="batch") as tepoch:
@@ -28,7 +29,7 @@ def train_cl(cl, train_dataloader, e, optimizer, loss_function):
 
 def train_frcnn(frcnn, train_dataloader, optimizer, e):
     all_loss = []
-    optimizer = optimizer
+    optimizer = torch.optim.Adam(frcnn.parameters(), lr=1e-4, weight_decay=0.0005)
     for epoch in range(1, e+1):
         running_loss = 0
         torch.cuda.empty_cache()

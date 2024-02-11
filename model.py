@@ -6,8 +6,15 @@ import torchvision
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
 from torchvision.models.detection import FasterRCNN
 
+import argparse
 import collections
 collections.Iterable = collections.abc.Iterable
+
+
+parser = argparse.ArgumentParser(description='Inference')
+
+parser.add_argument('run', choices=['cl', 'frcnn'], help='Create and save model')
+parser.add_argument('--path', type=str, default='kaggle_set/stage_2_test_images', help='Path to test images')
 
 
 def load_model(path_model, model_type, lr, wd=0.0):
@@ -75,3 +82,24 @@ class Classifier(nn.Module):
         out = x.flatten(start_dim=1)
         return out
 
+def create_save_cl(path):
+    # creates and saves classification model
+    cl = Classifier()
+    torch.save(cl.state_dict(), path)
+
+
+def create_save_frcnn(path):
+    # creates and saves classification model
+    frcnn = FRCNN()
+    torch.save(frcnn.state_dict(), path)
+
+
+if __name__ == '__main__':
+    args = parser.parse_args()
+
+    if args.run == 'cl':
+        create_save_cl(args.path)
+    elif args.run == 'frcnn':
+        create_save_frcnn(args.path)
+    else:
+        raise ValueError('Invalid run type, expected "cl" or "frcnn"')
